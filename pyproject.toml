@@ -29,24 +29,34 @@ loguru = "^0.7.0"
 
 
 
-[tool.poetry.group.dev.dependencies]
-python-semantic-release = "^8.0.2"
-ruff = "*"
 
+[tool.poetry.group.dev.dependencies]
+python-semantic-release = ">=8.0.8"
+ruff = "^0.7.0"
+black = "^24.0.0"
+pre-commit = "^3.3.1"
 
 [tool.ruff]
-select = [
-  "E",  # pycodestyle
-  "F",  # pyflakes
-  "I",  # isort
-]
 exclude = [
   ".github/*",
   "docs/*",
 ]
-ignore = ["E401","F401","F811"]
-format = "github"
+
+[tool.ruff.lint]
+select = [
+  "E",  # pycodestyle
+  "F",  # pyflakes
+  "I",  # isort
+  "W"
+]
+
+#ignore = ["E401","F401","F811"]
 fixable = ["ALL"]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
 
 [tool.pylint.exceptions]
 overgeneral-exceptions = [
@@ -54,7 +64,6 @@ overgeneral-exceptions = [
     "builtins.Exception",
     "builtins.RuntimeError",
 ]
-
 
 
 [tool.poetry.group.test.dependencies]
