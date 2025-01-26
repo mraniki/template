@@ -2,11 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
-    ":semanticCommitTypeAll(⬆️)",
+    ":semanticCommitTypeAll(⬆️ 🛠️)",
     ":disableDependencyDashboard"
   ],
+  "gitIgnoredAuthors": ["githubaction@githubaction.com","github-actions[bot]","8766259+mraniki@users.noreply.github.com"],
   "semanticCommits": "enabled",
   "labels": ["dependencies"],
+  "baseBranches": ["dev"],
   "packageRules": [
     {
 			"matchManagers": ["pip_requirements"],
@@ -15,13 +17,11 @@
     {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
-      "automerge": true,
-      "minimumReleaseAge": "8 hours"
+      "automerge": true
     },
     {
       "matchUpdateTypes": ["major"],
       "automerge": false,
-      "matchBaseBranches": ["dev"],
       "minimumReleaseAge": "30 days"
     }
   ]
